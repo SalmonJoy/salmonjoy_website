@@ -1,0 +1,14 @@
+---
+interface Props { variant?: number; compact?: boolean; }
+const { variant = 0, compact = false } = Astro.props;
+const labels = [['YOUR KNOWLEDGE', 'FIND THE EVIDENCE', 'GROUNDED ANSWER'], ['REGULATORY CIRCULAR', 'STRUCTURE + REVIEW', 'CLEAR ACTION POINTS'], ['GENERATE', 'JUDGE + REFINE', 'TRAINING DATA']][variant];
+---
+<div class:list={['architecture', { compact }]} data-architecture={variant}>
+  <div class="arch-grid"></div>
+  <div class="arch-node arch-node-a"><span class="doc-stack"><i></i><i></i><i></i></span><small>{labels[0]}</small></div>
+  <span class="arch-connector connector-a" aria-hidden="true"></span>
+  <div class="arch-node arch-node-b"><span class="core-orbit"><i></i><b>✦</b></span><small>{labels[1]}</small></div>
+  <span class="arch-connector connector-b" aria-hidden="true"></span>
+  <div class="arch-node arch-node-c"><span class="result-lines"><i></i><i></i><i></i><b>✓</b></span><small>{labels[2]}</small></div>
+  <span class="arch-caption">{['A CONNECTION TO WHAT MATTERS', 'FROM INFORMATION TO ACTION', 'QUALITY AT EVERY STEP'][variant]}</span>
+</div>

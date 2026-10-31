@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Architecture from '../../components/Architecture.astro';
+import Icon from '../../components/Icon.astro';
+import {featured} from '../../data/content';
+export function getStaticPaths(){return featured.map((project,index)=>({params:{slug:project.slug},props:{project,index}}));}
+const {project:p,index} = Astro.props;
+---
+<Layout title={`${p.description} — Salmon Joy`} description={p.approach}>
+ <section class="case-hero dark-scene"><a class="text-link" href="/projects/">← Back to all projects</a><p class="eyebrow">SELECTED WORK / 0{index+1} · {p.description}</p><h1>{p.title}</h1><p>{p.approach}</p></section>
+ <section class="case-body"><article><h2>The problem</h2><p>{p.problem}</p><h2>My contribution</h2><p>{p.contribution}</p><h2>The approach</h2><p>{p.approach}</p><h2>What it teaches</h2><p>{index===0?'Retrieval quality and answer quality belong in the same conversation. A useful system connects the right sources to the response, then makes the result inspectable.':index===1?'A clear schema turns an open-ended model response into something a team can work with. Human review remains part of the workflow, especially when the source material has real consequences.':'Training data needs more than volume. Hard negatives and quality checks help a model learn the distinction between useful information and convincing distractions.'}</p><a class="text-link" href="/Salmon%20Project%20Portfolio.pdf">Read the original project portfolio <Icon/></a></article><aside class="case-aside"><Architecture variant={index}/><strong>{p.metric}</strong><p>{p.outcome}</p><div class="tags">{p.stack.map(s=><span>{s}</span>)}</div><small>{p.context}</small></aside></section>
+</Layout>

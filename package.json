@@ -1,0 +1,24 @@
+{
+  "name": "salmon-joy-ai-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.16.0",
+    "gsap": "^3.14.0",
+    "three": "^0.180.0",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@types/three": "^0.180.0",
+    "typescript": "^5.9.3"
+  }
+}
