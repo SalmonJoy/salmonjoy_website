@@ -17,7 +17,7 @@ Verified against the local production build on Windows/Chrome, 31 October 2026.
 
 ## Visual and responsive review
 
-Reviewed the hero, metrics, teaching panels, training panels, case studies, authentic photography, biography/timeline, newsletter, contact form, and mobile navigation. Fixed image intrinsic-height cropping, tablet caption collisions, initial reading sizes, and guide hit-target overlap.
+Reviewed the hero, metrics, teaching panels, training panels, case studies, authentic photography, biography/timeline, newsletter, contact form, and mobile navigation. Fixed image intrinsic-height cropping, tablet caption collisions, short-window hero spacing, initial reading sizes, and guide hit-target overlap.
 
 CSS viewport widths 360, 390, 768, 1024, 1366, and 1440 passed horizontal-overflow checks. Main reading copy is 16 px or larger. Phones and tablets use an animated SVG Nori; desktop uses deferred Three.js, with a static fallback for reduced motion or unavailable graphics. The guide remains functional in either rendering mode.
 
@@ -33,7 +33,7 @@ Lighthouse 12.8.2 mobile lab audit on the optimized production build:
 | SEO | 100 |
 | Largest contentful paint | 1.83 s |
 | Cumulative layout shift | 0 |
-| Total blocking time | 92 ms |
+| Total blocking time | 49 ms |
 
 The initial client script is about 4.7 KB gzipped. Estimated compressed HTML, CSS, fonts, portrait, and all deferred JavaScript together are approximately 373 KB; lower-page photos and PDF downloads are excluded from that estimate. Reports and screenshots are in the parent `qa/` folder. These are lab results, not field measurements.
 
