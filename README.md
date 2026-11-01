@@ -12,6 +12,8 @@ Nori uses one WebGL renderer, progressively loaded after the essential content. 
 
 ## Launch
 
+Start with [DEPLOYMENT.md](DEPLOYMENT.md) for the complete GitHub-to-Hostinger procedure: build settings, Nginx/HTTPS, release activation, verification, updates and rollback.
+
 The owner approved the private Sites preview and will deploy the production build to their existing Hostinger server. No further deployment is authorized. Canonical metadata and sitemap target `https://salmonjoy.com`. Upload the contents of `dist/` to the configured website document root; the production site needs only a static web server, with no Node.js process or application backend. Preserve all paths, including the three legacy PDFs and `_astro/` assets. Configure HTTPS and a server-level `www` redirect to the apex, retaining the previous deployment for rollback and preserving mail DNS. Physical-device and native 200% zoom checks are deferred to the owner; see `QA.md`.
 
 ## SEO release

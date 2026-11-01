@@ -28,8 +28,11 @@ server {
     location = /404.html { add_header X-Robots-Tag "noindex, follow" always; }
     location = /Profile.pdf { add_header X-Robots-Tag "noindex" always; }
     location = "/Salmon Joy Profile 2025 (2).pdf" { add_header X-Robots-Tag "noindex" always; }
-    # Permanent removal of index.html aliases; retain path and query.
-    location ~ ^(.*/)index\.html$ { return 301 https://salmonjoy.com$1$is_args$args; }
+    # Redirect only an explicit client index.html request. Matching a location
+    # would also catch Nginx's internal directory-index lookup and cause a loop.
+    if ($request_uri ~ "^(/.*)index\.html(?:\?.*)?$") {
+        return 301 https://salmonjoy.com$1$is_args$args;
+    }
     location /_astro/ {
         try_files $uri =404;
         expires 1y;
