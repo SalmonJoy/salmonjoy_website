@@ -1,0 +1,23 @@
+{
+  "graphite": {
+    "label": "Graphite + Burgundy",
+    "dark": "#14171B", "surface": "#F4F4F1", "brand": "#7A2438", "accent": "#C4CBD3",
+    "ink": "#20262D", "muted": "#57616A", "onDarkMuted": "#BCC4CC",
+    "raised": "#E9EBEB", "soft": "#DFE3E5", "paper": "#FCFCFA", "border": "#B8BFC5",
+    "panel": "#242A31", "collarLight": "#963448"
+  },
+  "navy": {
+    "label": "Midnight + Steel Blue",
+    "dark": "#101B2C", "surface": "#F3F6FA", "brand": "#2456B8", "accent": "#97B4E4",
+    "ink": "#1F2937", "muted": "#576779", "onDarkMuted": "#BDCADB",
+    "raised": "#E7EDF4", "soft": "#DAE3F0", "paper": "#FCFDFF", "border": "#B4C2D2",
+    "panel": "#202F45", "collarLight": "#3D70CF"
+  },
+  "copper": {
+    "label": "Charcoal + Copper",
+    "dark": "#191A19", "surface": "#F5F2EC", "brand": "#8B442D", "accent": "#D6A079",
+    "ink": "#252724", "muted": "#66685F", "onDarkMuted": "#C9C7BF",
+    "raised": "#EAE6DD", "soft": "#DED8CC", "paper": "#FFFDF8", "border": "#C2BCAF",
+    "panel": "#2B2B27", "collarLight": "#A65D3D"
+  }
+}

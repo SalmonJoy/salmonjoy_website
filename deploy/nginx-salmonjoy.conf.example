@@ -1,0 +1,42 @@
+# Merge into the existing salmonjoy.com virtual host after backing it up.
+# Do not replace other sites, TLS options, certificates or mail configuration.
+# Replace /var/www/salmonjoy/current with the actual release symlink/document root.
+# Port 80 and www server blocks shown as examples; keep existing ACME handling.
+server {
+    listen 80;
+    server_name salmonjoy.com www.salmonjoy.com;
+    # Preserve your existing /.well-known/acme-challenge/ handler if used.
+    return 301 https://salmonjoy.com$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name www.salmonjoy.com;
+    # Retain the actual ssl_certificate and ssl_certificate_key directives here.
+    return 301 https://salmonjoy.com$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name salmonjoy.com;
+    # Retain existing TLS certificate directives and security configuration.
+    root /var/www/salmonjoy/current;
+    index index.html;
+    charset utf-8;
+    gzip on;
+    gzip_vary on;
+    gzip_types text/plain text/css application/javascript application/json application/xml image/svg+xml;
+    error_page 404 /404.html;
+    location = /404.html { add_header X-Robots-Tag "noindex, follow" always; }
+    location = /Profile.pdf { add_header X-Robots-Tag "noindex" always; }
+    location = "/Salmon Joy Profile 2025 (2).pdf" { add_header X-Robots-Tag "noindex" always; }
+    # Permanent removal of index.html aliases; retain path and query.
+    location ~ ^(.*/)index\.html$ { return 301 https://salmonjoy.com$1$is_args$args; }
+    location /_astro/ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    location / {
+        try_files $uri $uri/ =404;
+        add_header Cache-Control "no-cache";
+    }
+}

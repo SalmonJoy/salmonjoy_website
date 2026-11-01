@@ -1,9 +1,11 @@
 ---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+const breadcrumbs=[{name:'Home',path:'/'},{name:'Projects',path:'/projects/'}];
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import {projects,categories} from '../../data/content';
 ---
-<Layout title="AI engineering projects — Salmon Joy" description="Explore 21 projects across Generative AI, RAG, banking automation, governance, machine learning, and practical AI products.">
- <section class="library-hero"><span class="eyebrow">THE PROJECT LIBRARY / 21 EXPLORATIONS</span><h1>Ideas, put<br/>into <em>practice.</em></h1><p>From retrieval systems to learning tools. A closer look at the engineering behind the teaching.</p></section>
+<Layout breadcrumbs={breadcrumbs} title="AI engineering projects — Salmon Joy" description="Explore 21 projects across Generative AI, RAG, banking automation, governance, machine learning, and practical AI products.">
+ <section class="library-hero"><Breadcrumbs items={breadcrumbs}/><span class="eyebrow">THE PROJECT LIBRARY / 21 EXPLORATIONS</span><h1>Ideas, put<br/>into <em>practice.</em></h1><p>From retrieval systems to learning tools. A closer look at the engineering behind the teaching.</p></section>
  <section class="library" aria-label="Project library"><div class="project-filters" role="group" aria-label="Filter projects"><button data-filter="all" aria-pressed="true">All projects</button>{categories.map(c=><button data-filter={c} aria-pressed="false">{c}</button>)}</div><p id="filter-status" class="filter-status" role="status">Showing 21 of 21 projects</p><div class="project-grid">{projects.map(p=><article class="project-card" data-project-category={p.category}><span class="eyebrow">{String(p.id).padStart(2,'0')} / {p.category}</span><h2>{p.title}</h2><p>{p.description}</p><p class="project-metric">{p.metric}</p><small>{p.metricLabel} · reported result</small><div class="tags">{p.stack.map(s=><span>{s}</span>)}</div>{p.featured?<a class="text-link" href={`/projects/${p.slug}/`}>Inside the project <Icon/></a>:<details><summary>Explore the approach</summary><p>{p.approach}</p><strong>Reported outcome</strong><p>{p.outcome}</p></details>}</article>)}</div><p class="library-note">Outcomes are reported in my project portfolio and relate to each project’s evaluation or deployment context. <a class="text-link" href="/Salmon%20Project%20Portfolio.pdf">Download the full portfolio <span>↓</span></a></p></section>
 </Layout>

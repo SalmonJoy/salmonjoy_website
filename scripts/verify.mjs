@@ -6,8 +6,8 @@ import ts from 'typescript';
 const root=path.resolve('dist');
 async function files(dir){const result=[];for(const entry of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())result.push(...await files(p));else result.push(p);}return result;}
 const all=await files(root);const pages=all.filter(p=>p.endsWith('.html'));
-assert.equal(pages.length,6,'Expected home, library, privacy, and three case studies');
-for(const file of pages){const html=await readFile(file,'utf8');assert.match(html,/<h1[ >]/);assert.match(html,/<html lang="en"/);assert.match(html,/<link rel="canonical" href="https:\/\/salmonjoy.com/);assert.match(html,/<noscript>/);assert.match(html,/<option value="work">AI at Work/);assert.match(html,/aria-label="Pause animations"/);
+assert.equal(pages.length,15,'Expected 14 indexable pages and one 404 page');
+for(const file of pages){const html=await readFile(file,'utf8');assert.match(html,/<h1[ >]/);assert.match(html,/<html lang="en"/);assert.match(html,/<link rel="canonical" href="https:\/\/salmonjoy.com/);assert.match(html,/<noscript>/);assert.match(html,/<option value="work"[^>]*>AI at Work/);assert.match(html,/aria-label="Pause animations"/);
  for(const match of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)){const relative=decodeURIComponent(match[1]);let target=path.join(root,relative);if(relative.endsWith('/'))target=path.join(target,'index.html');await assert.doesNotReject(()=>stat(target),`Missing local target ${relative} on ${file}`);}
 }
 const home=await readFile(path.join(root,'index.html'),'utf8');

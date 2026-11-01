@@ -1,0 +1,6 @@
+---
+import type {Breadcrumb} from '../data/seo';
+interface Props {items:Breadcrumb[]}
+const {items}=Astro.props;
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>{items.map((item,i)=><li>{i===items.length-1?<span aria-current="page">{item.name}</span>:<a href={item.path}>{item.name}</a>}</li>)}</ol></nav>

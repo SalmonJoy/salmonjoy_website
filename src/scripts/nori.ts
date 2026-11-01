@@ -2,9 +2,11 @@ import * as THREE from 'three';
 export async function createNori(canvas:HTMLCanvasElement,onFailure:()=>void){
  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.25:1.5));renderer.setClearColor(0,0);renderer.outputColorSpace=THREE.SRGBColorSpace;
+ const css=getComputedStyle(globalThis.document.documentElement);
+ const color=(name:string)=>css.getPropertyValue(`--${name}`).trim();
  const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(35,1,.1,50);camera.position.set(0,.15,5.7);camera.lookAt(0,0,0);
- scene.add(new THREE.HemisphereLight(0xfff8ed,0x573140,2.4));const light=new THREE.DirectionalLight(0xffe4d7,4);light.position.set(-3,5,5);scene.add(light);const rim=new THREE.DirectionalLight(0xe0a0b6,2.5);rim.position.set(4,1,-2);scene.add(rim);
- const ivory=new THREE.MeshPhysicalMaterial({color:0xf6f1e9,roughness:.28,metalness:.05,clearcoat:.6});const burgundy=new THREE.MeshStandardMaterial({color:0x812641,roughness:.42});const dark=new THREE.MeshStandardMaterial({color:0x281e25,roughness:.28});const rose=new THREE.MeshStandardMaterial({color:0xdca4b3,emissive:0x812641,emissiveIntensity:.15});const eyeMat=new THREE.MeshBasicMaterial({color:0xfff4dd});
+ scene.add(new THREE.HemisphereLight(0xffffff,0x444c54,2.4));const light=new THREE.DirectionalLight(0xffffff,3.5);light.position.set(-3,5,5);scene.add(light);const rim=new THREE.DirectionalLight(0xdce4ee,2);rim.position.set(4,1,-2);scene.add(rim);
+ const ivory=new THREE.MeshPhysicalMaterial({color:color('nori-shell'),roughness:.42,metalness:.04,clearcoat:.35});const burgundy=new THREE.MeshStandardMaterial({color:color('nori-collar'),roughness:.42});const dark=new THREE.MeshStandardMaterial({color:color('nori-visor'),roughness:.28});const rose=new THREE.MeshStandardMaterial({color:color('nori-spark'),emissive:color('nori-collar'),emissiveIntensity:0});const eyeMat=new THREE.MeshBasicMaterial({color:color('nori-eye')});
  function sphere(material:THREE.Material,x:number,y:number,z:number,sx:number,sy:number,sz:number){const mesh=new THREE.Mesh(new THREE.SphereGeometry(1,28,20),material);mesh.position.set(x,y,z);mesh.scale.set(sx,sy,sz);return mesh;}
  const character=new THREE.Group();scene.add(character);const body=sphere(ivory,0,0,0,.64,.81,.49);character.add(body);
  const collar=new THREE.Mesh(new THREE.TorusGeometry(.47,.12,12,40),burgundy);collar.rotation.x=Math.PI/2;collar.position.y=-.42;character.add(collar);
@@ -14,13 +16,13 @@ export async function createNori(canvas:HTMLCanvasElement,onFailure:()=>void){
  const left=sphere(ivory,-.86,-.24,0,.15,.2,.15);const right=sphere(ivory,.86,-.1,.05,.15,.2,.15);character.add(left,right);
  const spark=new THREE.Group();const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.14),rose);spark.add(diamond);spark.position.set(.91,.65,.05);scene.add(spark);
  const sparkHalo=new THREE.Mesh(new THREE.TorusGeometry(.21,.009,5,30),rose);spark.add(sparkHalo);
- const shadow=new THREE.Mesh(new THREE.CircleGeometry(.6,40),new THREE.MeshBasicMaterial({color:0x27151e,transparent:true,opacity:.08}));shadow.scale.y=.14;shadow.position.set(0,-1.05,-.3);scene.add(shadow);
+ const shadow=new THREE.Mesh(new THREE.CircleGeometry(.6,40),new THREE.MeshBasicMaterial({color:color('nori-visor'),transparent:true,opacity:.08}));shadow.scale.y=.14;shadow.position.set(0,-1.05,-.3);scene.add(shadow);
  const props=new THREE.Group();character.add(props);
  function board(w:number,h:number,color:THREE.Material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,.045),color);mesh.position.set(0,-.5,.68);return mesh;}
  const document=board(.58,.46,ivory);document.rotation.z=-.12;const book=board(.65,.42,burgundy);book.rotation.z=.09;const envelope=board(.62,.4,rose);
- const envelopeLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.3,-.3,.71),new THREE.Vector3(0,-.53,.71),new THREE.Vector3(.3,-.3,.71)]),new THREE.LineBasicMaterial({color:0x812641}));
+ const envelopeLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.3,-.3,.71),new THREE.Vector3(0,-.53,.71),new THREE.Vector3(.3,-.3,.71)]),new THREE.LineBasicMaterial({color:color('nori-collar')}));
  const boardLines=new THREE.Group();for(let i=0;i<3;i++){const line=new THREE.Mesh(new THREE.BoxGeometry(i===2?.2:.37,.018,.01),burgundy);line.position.set(-.03,-.39-i*.075,.72);boardLines.add(line);}
- const nodes=new THREE.Group();for(let i=0;i<3;i++){const node=sphere(i===1?rose:ivory,-.3+i*.3,-.55,.75,.075,.075,.075);nodes.add(node);}const wire=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.3,-.55,.75),new THREE.Vector3(.3,-.55,.75)]),new THREE.LineBasicMaterial({color:0xdca4b3}));nodes.add(wire);
+ const nodes=new THREE.Group();for(let i=0;i<3;i++){const node=sphere(i===1?rose:ivory,-.3+i*.3,-.55,.75,.075,.075,.075);nodes.add(node);}const wire=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.3,-.55,.75),new THREE.Vector3(.3,-.55,.75)]),new THREE.LineBasicMaterial({color:color('nori-spark')}));nodes.add(wire);
  props.add(document,book,envelope,envelopeLine,boardLines,nodes);let state='hero',step=0,paused=false,disposed=false,frame=0,last=0,elapsed=0,slow=0;let pointerX=0,pointerY=0;
  const showProps=()=>{document.visible=['teaching','training','proof'].includes(state);boardLines.visible=document.visible;book.visible=state==='ideas';envelope.visible=state==='contact';envelopeLine.visible=envelope.visible;nodes.visible=state==='work';};showProps();
  const resize=()=>{const r=canvas.getBoundingClientRect();if(r.width&&r.height){renderer.setSize(r.width,r.height,false);renderer.render(scene,camera);}};const observer=new ResizeObserver(resize);observer.observe(canvas);resize();

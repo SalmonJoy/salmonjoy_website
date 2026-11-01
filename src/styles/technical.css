@@ -1,0 +1,42 @@
+/* Geometry and typography shared by all comparison themes. */
+body { font-weight:400; }
+h1,h2,h3 {font-weight:600;letter-spacing:-.035em;}
+em {font-family:inherit;font-weight:inherit;font-style:normal;letter-spacing:inherit;}
+.hero h1 {font-weight:700;letter-spacing:-.035em;line-height:1.04;font-size:clamp(64px,6.8vw,104px);}
+.hero h1 em {font-size:1em;line-height:inherit;}
+.hero-orbit,.article-art i,.portrait-label>svg,.nori-note i,.art-spark {display:none;}
+.nori-note,.hero-nori .nori-note {font-family:inherit;font-style:normal;font-size:12px;line-height:1.65;letter-spacing:.02em;transform:none;max-width:180px;}
+.footer-top p,.mobile-menu>p {font-family:inherit;font-style:normal;font-size:16px;letter-spacing:0;}
+.serif-line {font-family:inherit;font-style:normal;font-weight:500;font-size:.6em;letter-spacing:-.025em;line-height:1.25;}
+.metrics strong,.case-result strong,.project-metric {font-weight:600;letter-spacing:-.035em;}
+.metrics strong span,.step-number,.service-number,.quote-mark,.article-art>span {font-family:inherit;font-style:normal;font-weight:600;}
+.stage-foot em {font-size:17px;}
+.article-art>span {letter-spacing:-.04em;}
+.status-dot,.story-thread i,.core-orbit i {box-shadow:none;}
+.architecture {background:var(--surface-dark);}
+.button,.header-contact,.mobile-training-cta,.training-card,.service-card,.project-card,
+.teaching-stage,.mobile-demo-panel,.evidence-panel,.prompt-example,.article-callout,
+.policy-document,.ghost-doc,.mini-window,.build-chip,.teach-board,.result-lines,
+.question-bubble,.mobile-question,.project-filters button,.step-controls button,
+input,select,textarea,dialog,.tags span {border-radius:6px;}
+.mini-window,.build-chip,.build-chip.second,.teach-board {transform:none;}
+.button-outline:hover {color:var(--ink);}
+.dark-scene .button-outline:hover {color:var(--surface);}
+.enquiry-form input::placeholder,.enquiry-form textarea::placeholder {color:var(--text-on-dark-muted);}
+input,select,textarea {border-color:var(--control-border-light);}
+.enquiry-form input,.enquiry-form select,.enquiry-form textarea {border-color:var(--control-border-dark);}
+:focus-visible {outline-color:var(--focus-light);}
+.dark-scene :focus-visible,.site-header :focus-visible,.site-footer :focus-visible {outline-color:var(--focus-dark);}
+.article-card.featured .article-art {border-radius:6px;}
+@media (min-width:768px) and (max-width:1023px) {
+ .hero h1 {font-size:clamp(48px,6.5vw,66px);}
+ .hero-visual {margin-top:32px;}
+}
+@media (max-width:767px) {
+ .hero h1 {font-size:clamp(48px,12.8vw,76px);}
+ .hero h1 br:nth-child(2) {display:initial;}
+ .hero h1 em:before {content:none;}
+ .hero-nori .nori-note {font-size:11px;}
+ .footer-top p {font-size:16px;}
+ .mobile-training-cta {border-radius:6px;}
+}

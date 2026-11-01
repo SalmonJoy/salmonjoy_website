@@ -5,20 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "astro build",
+    "build": "node scripts/build.mjs",
     "preview": "astro preview --host 127.0.0.1",
-    "check": "astro check"
+    "check": "astro check",
+    "verify": "node scripts/verify.mjs && node scripts/verify-seo.mjs && node scripts/verify-theme.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "theme:assets": "node scripts/theme-assets.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.8",
     "astro": "^5.16.0",
     "gsap": "^3.14.0",
-    "three": "^0.180.0",
-    "@fontsource-variable/manrope": "^5.2.8",
-    "@fontsource/instrument-serif": "^5.2.5"
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
     "@types/three": "^0.180.0",
-    "typescript": "^5.9.3"
+    "fontkit": "2.0.4",
+    "sharp": "0.34.5",
+    "typescript": "^5.9.3",
+    "wawoff2": "2.0.1"
   }
 }

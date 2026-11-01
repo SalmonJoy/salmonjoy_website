@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/Icon.astro';
+import {insights} from '../../data/articles';
+const breadcrumbs=[{name:'Home',path:'/'},{name:'Insights',path:'/insights/'}];
+---
+<Layout title="Practical AI Guides for Teams | Salmon Joy" description="Original guides from Salmon Joy on corporate AI training and practical ChatGPT workflows. Clear examples, source checks and useful next steps." breadcrumbs={breadcrumbs}>
+<section class="editorial-hero dark-scene"><Breadcrumbs items={breadcrumbs}/><span class="eyebrow">AI FOR THE WORK IN FRONT OF YOU</span><h1>Big ideas.<br/><em>Practical next steps.</em></h1><p>Guides for people who want to understand AI, put it to work and know what to check.</p></section>
+<section class="editorial-wrap"><div class="guide-grid">{insights.map(a=><article class="guide-card"><a href={`/insights/${a.slug}/`}><img src={a.image} width="1200" height="630" alt={a.imageAlt} loading="lazy"/><span class="eyebrow">{a.topic}</span><h2>{a.title}</h2><p>{a.description}</p><span class="text-link">Read the guide <Icon/></span></a></article>)}</div><div class="evidence-strip"><div><h2>A little more curiosity.</h2><p>Explore related explanations in AI for the Lazy Genius, Salmon’s LinkedIn newsletter.</p><a href="https://www.linkedin.com/newsletters/7300788113734307840/" class="text-link" target="_blank" rel="noopener noreferrer">Read & subscribe <Icon/></a></div><div><h3>Prefer to watch?</h3><a href="https://www.youtube.com/@ai.4.lazygenius" class="video-resource" target="_blank" rel="noopener noreferrer"><img src="/images/portrait.webp" width="96" height="96" loading="lazy" alt="Salmon Joy"/><span>Educational videos on YouTube <Icon/></span></a><p>No video loads until you open YouTube.</p></div></div></section>
+</Layout>
