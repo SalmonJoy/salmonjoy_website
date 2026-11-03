@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import {lessons} from '../../data/lessons';
+import '../../styles/lessons.css';
+const breadcrumbs=[{name:'Home',path:'/'},{name:'Learn',path:'/learn/'}];
+---
+<Layout title="Learn GenAI with Salmon | Free Interactive AI Lessons" description="Try three playful, self-guided GenAI lessons with Salmon Joy and Nori. Explore AI answers, useful prompts and RAG through short animated activities." breadcrumbs={breadcrumbs}>
+ <section class="learn-hero"><Breadcrumbs items={breadcrumbs}/><span class="eyebrow">LESS HEAD-SCRATCHING. MORE “OH, I GET IT.”</span><h1>A little curiosity.<br/>A hands-on way to learn AI.</h1><p>Try something. Watch what changes. Figure out why. Three small experiments, explained by Salmon and brought to life with Nori.</p><div class="learn-meta"><span>5–8 minutes each</span><span>Free · No account</span><span>Guided simulations · No live AI</span></div></section>
+ <section class="learn-cards" aria-label="Choose an interactive lesson">{lessons.map(l=><article class="learn-card"><img src={`/images/${l.art}.png`} width="1200" height="630" loading="lazy" alt={`${l.title}: an illustrated three-stage learning path.`}/><div class="learn-card-body"><span class="eyebrow">{l.number} / {l.audience}</span><h2>{l.title}</h2><p>{l.description}</p><a href={`/learn/${l.slug}/`} class="text-link">{l.id==='answer'?'Start here':'Try this lesson'} <span aria-hidden="true">↗</span></a></div></article>)}</section>
+ <aside class="learn-hub-note"><h2>Small lessons. Useful ideas.</h2><p>Each lesson stands on its own. Choose the one that fits your curiosity; you do not have to complete them in order. Prefer reading? Every activity includes the complete walkthrough.</p><p>These are authored teaching examples. They do not send prompts to an AI service, store your answers or award certifications.</p></aside>
+</Layout>

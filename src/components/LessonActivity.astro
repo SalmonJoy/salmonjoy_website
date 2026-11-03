@@ -1,0 +1,36 @@
+---
+import type {Lesson} from '../data/lessons';
+import {lessonBeats} from '../data/lesson-beats';
+import NoriFallback from './NoriFallback.astro';
+import {reusableBrief,documents,ragPseudocode} from '../data/lesson-fixtures';
+import {initialState,evaluateFixtures} from '../scripts/lesson-engine';
+import {initialFlow} from '../scripts/lesson-flow';
+import {scene} from '../scripts/lesson-scenes';
+const {lesson}=Astro.props as {lesson:Lesson};
+const beats=lessonBeats[lesson.id];
+const initial=scene(lesson.id,initialFlow());
+const repairedFixtures=evaluateFixtures({...initialState(),checks:['current','exception','missing']});
+const brokenFixtures=evaluateFixtures(initialState());
+---
+<section class="lesson-experience" id="activity" aria-label={lesson.title+' activity'}>
+ <script type="application/json" id="lesson-data" set:html={JSON.stringify({id:lesson.id,activities:lesson.steps.map(s=>s.title)}).replace(/</g,'\\u003c')}/>
+ <div class="lesson-app" inert>
+  <div class="focus-toolbar"><p id="lesson-position">Activity 1 of {lesson.steps.length}</p><details class="lesson-outline"><summary>Lesson outline</summary><nav aria-label="Lesson activities">{lesson.steps.map((step,i)=><button type="button" data-activity={i} aria-current={i===0?'step':undefined}>{String(i+1).padStart(2,'0')} &middot; {step.title}</button>)}</nav><button type="button" data-skip-recap>Skip to recap</button><button type="button" data-restart>Restart lesson</button></details></div>
+  <div class="focus-card">
+   <div class="focus-instruction"><div class="teacher-label">WITH SALMON & NORI</div><div class="lesson-nori" aria-hidden="true"><NoriFallback/></div><h2 id="activity-title" tabindex="-1">{beats[0].title}</h2><p id="activity-lead">{beats[0].prompt}</p></div>
+   <div id="lesson-stage-content" class="focus-visual" set:html={initial.stage}></div>
+   <div id="lesson-controls" class:list={['focus-choices',{'object-choices':lesson.id==='answer'}]} aria-label="Your choice" set:html={initial.controls}></div>
+   <div class="answer-summary" hidden><p id="selected-answer"></p><button type="button" data-change-answer>Change my answer</button></div>
+   <div class="focus-feedback" hidden><h3 id="feedback-title" tabindex="-1">What changed</h3><p id="lesson-feedback" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" class="quiet-action" data-replay>Replay visual</button></div>
+   <div class="focus-navigation"><button class="quiet-action" type="button" data-back disabled>&larr; Back</button><button class="button button-burgundy" type="button" data-next hidden>Continue &rarr;</button></div>
+   <div id="lesson-detail"></div>
+   <p class="simulation-label">Illustrative simulation &middot; no live AI</p>
+  </div>
+ </div>
+ <p class="lesson-fallback-notice">The interactive controls need JavaScript. The complete walkthrough below is ready to read.</p>
+ <details class="lesson-walkthrough" id="walkthrough" open><summary>Read the complete walkthrough <span>All explanations, no animation needed</span></summary><p>Prefer reading? Here is the whole lesson. These are fictional, authored examples, not live model outputs.</p>{lesson.steps.map((step,i)=><section><span class="eyebrow">STEP {i+1}</span><h2>{step.title}</h2><p>{step.lead}</p>{step.walkthrough.map(text=><p>{text}</p>)}<p class="walkthrough-take">{step.explanation}</p></section>)}</details>
+ {lesson.id==='brief'&&<details class="lesson-walkthrough"><summary>Read or select the reusable brief</summary><pre class="static-prompt" tabindex="0">{reusableBrief}</pre></details>}
+ {lesson.id==='rag'&&<details class="lesson-walkthrough"><summary>Read the complete fictional document set</summary>{documents.map(d=><section><h2>{d.id} · {d.status}</h2><h3>{d.title}</h3><p>{d.passage}</p></section>)}</details>}
+ {lesson.id==='rag'&&<details class="lesson-walkthrough"><summary>Read the fixture traces and pipeline logic</summary>{repairedFixtures.map((r,i)=><section><h2>{r.label}</h2><p><strong>Without the repair:</strong> {brokenFixtures[i].actual}</p><p><strong>Supporting evidence:</strong> {r.source}</p><p><strong>With the repairs:</strong> {r.actual}</p><p><strong>Expected:</strong> {r.expected}</p></section>)}<h2>Conceptual pipeline</h2><pre class="static-prompt">{ragPseudocode}</pre><p>Conceptual pseudocode, not executable production code. These are three authored teaching cases, not a benchmark.</p></details>}
+ <noscript><style>.lesson-app{display:none!important}</style><p class="lesson-nojs">The walkthrough above contains the complete lesson. Enable JavaScript to try the interactive activities. All other reading and contact links remain available.</p></noscript>
+</section>

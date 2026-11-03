@@ -27,7 +27,7 @@ for(const file of htmlFiles){
  }
 }
 assert.deepEqual([...indexable].sort(),[...listed].sort(),'Sitemap does not match indexable pages');
-assert.equal(htmlFiles.length,15);assert.equal(indexable.length,14);
+assert.equal(htmlFiles.length,listed.length+1);assert.equal(indexable.length,listed.length);
 for(const [slug,track] of [['chatgpt-for-business','work'],['generative-ai-engineering','build'],['faculty-development','teach']]){const html=await readFile(path.join(root,'training',slug,'index.html'),'utf8');assert.match(html,new RegExp('<option value="'+track+'" selected'));assert.match(html,/"@type":"Service"/);}
 const about=await readFile(path.join(root,'about/index.html'),'utf8');assert.match(about,/"@type":"ProfilePage"/);
 for(const slug of ['choose-corporate-ai-training','chatgpt-workflows-for-business-teams']){const html=await readFile(path.join(root,'insights',slug,'index.html'),'utf8');assert.match(html,/"@type":"Article"/);assert.match(html,/Sources &amp; further reading|Sources & further reading/);}

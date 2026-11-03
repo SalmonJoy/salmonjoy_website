@@ -35,6 +35,8 @@ The repository root contains `package.json`; there is **no additional `site/` di
 
 ## 3. Configure and validate a release
 
+For the animated lesson release, also read [LEARN-HANDOFF.md](docs/LEARN-HANDOFF.md). Set `LESSON_PUBLISH_DATE` to the actual first public lesson date before the release build, then preserve it on later builds. Leave it unset for local review. It does not replace `ARTICLE_PUBLISH_DATE`. All four `/learn/` routes are static directory URLs and use the existing Nginx `try_files` routing.
+
 The theme defaults to graphite; the explicit setting below prevents an old shell override from selecting a comparison theme. The two initial article dates are deliberately unknown until actual publication. On first launch, enter the genuine publication date, record it in your deployment configuration, and reuse that same date on later builds. Do not replace it with today's date each time. For future articles, use individual dates in `src/data/articles.ts`.
 
 Run these commands from the repository root in Bash. Stop if any command fails:

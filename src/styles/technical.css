@@ -40,3 +40,5 @@ input,select,textarea {border-color:var(--control-border-light);}
  .footer-top p {font-size:16px;}
  .mobile-training-cta {border-radius:6px;}
 }
+
+.learn-preview-link{margin-top:44px;padding-top:25px;border-top:1px solid var(--border-light)}

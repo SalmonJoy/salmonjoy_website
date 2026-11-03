@@ -1,0 +1,5 @@
+[
+  {"id":"answer","slug":"how-ai-makes-an-answer","title":"How AI makes an answer","audience":"For curious beginners","description":"Build a sentence with Nori, change its context and discover why a plausible AI answer can still be wrong.","number":"01","art":"lesson-answer","lines":["One small piece.","A whole new answer."],"labels":["PREDICT","CHANGE","QUESTION"]},
+  {"id":"brief","slug":"give-ai-a-proper-brief","title":"Give AI a proper brief","audience":"For business teams","description":"Rescue a fictional meeting summary: build a clear brief, connect actions to sources and catch invented details.","number":"02","art":"lesson-brief","lines":["A better brief.","A useful next step."],"labels":["BRIEF","CHECK","APPLY"]},
+  {"id":"rag","slug":"fix-the-rag-bot","title":"Fix the RAG bot","audience":"For developers","description":"Debug a guided RAG simulation by inspecting retrieved documents, repairing context and checking claims against evidence.","number":"03","art":"lesson-rag","lines":["Find the source.","Fix the answer."],"labels":["RETRIEVE","GROUND","EVALUATE"]}
+]

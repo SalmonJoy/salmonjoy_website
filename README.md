@@ -10,7 +10,11 @@ Content is in `src/data/` (services, articles, projects, case details and shared
 
 Nori uses one WebGL renderer, progressively loaded after the essential content. The SVG fallback remains usable with reduced motion or failed WebGL. Motion preference is the only local-storage value. Workshop finder and message builder keep entries in memory until navigation/reload.
 
-## Launch
+## Animated GenAI lessons
+
+The `/learn/` hub contains three self-guided lessons for beginners, business teams and developers. They use one focused decision at a time, integrated SVG illustrations and diagrams, typed fixtures and small TypeScript controllers, with complete static walkthroughs. Reuse the single local preview at `http://127.0.0.1:4335/learn/` rather than starting another instance. See [LEARN-HANDOFF.md](docs/LEARN-HANDOFF.md) for local review, publication dates, test evidence and release notes. `npm run verify` includes the lesson state and fixture checks. Set `LESSON_PUBLISH_DATE` only when the lessons actually go public; it is independent of `ARTICLE_PUBLISH_DATE`.
+
+## Launch and hosting
 
 Start with [DEPLOYMENT.md](DEPLOYMENT.md) for the complete GitHub-to-Hostinger procedure: build settings, Nginx/HTTPS, release activation, verification, updates and rollback.
 

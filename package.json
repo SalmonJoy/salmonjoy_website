@@ -8,7 +8,7 @@
     "build": "node scripts/build.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "verify": "node scripts/verify.mjs && node scripts/verify-seo.mjs && node scripts/verify-theme.mjs",
+    "verify": "node scripts/verify.mjs && node scripts/verify-seo.mjs && node scripts/verify-theme.mjs && node scripts/verify-lessons.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "theme:assets": "node scripts/theme-assets.mjs"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
     "@types/three": "^0.180.0",
+    "esbuild": "0.28.2",
     "fontkit": "2.0.4",
     "sharp": "0.35.5",
     "typescript": "^5.9.3",

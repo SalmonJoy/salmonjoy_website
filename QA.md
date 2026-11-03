@@ -1,4 +1,19 @@
-# Graphite release verification - 1 November 2026
+# Current verification — focused lessons, 3 November 2026
+
+The latest lesson redesign uses a single reading path, integrated SVG scenes, 32 focused beats and a collapsed outline. Optional detail follows Continue. Recap/contact content appears after completion or Skip to recap. Earlier release reports below are historical.
+
+Before pushing, the lesson commit was rebased onto the owner's existing Astro 7.3.8 / sharp 0.35.5 upgrade. The merged source passes check, build and verification under Node 24.22.1, and its dependency audit reports zero vulnerabilities. The screenshot and Lighthouse evidence describes the original local review build; those audits were not repeated for the dependency reconciliation. Use the current GitHub source for a new deployment rather than the older review ZIPs.
+
+- Final check/build/verification pass: 49 checked files, no diagnostics, 19 HTML pages, 18 indexable routes, 85 structured entities, 21 projects and three legacy PDFs.
+- Automated branch tests: 58 choice branches, eight RAG evaluation-setting combinations, state isolation, dependency invalidation, skipped-claim handling and fixture repairs.
+- Browser layout checks: all 32 beats before/after a choice at 360, 390, 768, 1024, 1366 and 1440 CSS pixels (384 combinations), with no horizontal page overflow or Nori/title overlap. Desktop/mobile screenshots were inspected and the interface refined.
+- Complete journeys, retries, Back, outline navigation, Escape, Restart, Replay, rapid token input, prompt-copy success/fallback, script-blocked reading, motion controls and training enquiry preparation were exercised.
+- Final mobile Lighthouse: beginner 99, business 100, developer 99, homepage 97 for performance; accessibility, best practices and SEO 100 on all four. LCP 1.60–1.66 seconds, CLS 0. These are local lab results.
+- Evidence: `qa/lessons-focus-2026-11-03/` in the review kit. See [lesson handoff](docs/LEARN-HANDOFF.md) for reproduction and publication settings.
+
+Only the existing local preview on port 4335 is retained. Nothing was deployed or pushed. Physical phones, native 200% zoom and human screen-reader testing remain owner sign-off checks. This is a design review, not a measured learner study. Existing toolchain advisory details remain in the handoff.
+
+# Historical: Graphite release verification - 1 November 2026
 
 Selected Graphite + Burgundy after comparing three complete local builds. See [theme decision](docs/THEME-DECISION.md). Nothing was deployed; earlier releases and the private Sites preview remain unchanged.
 
@@ -125,3 +140,26 @@ The initial client script is about 4.7 KB gzipped. Estimated compressed HTML, CS
 - Real iPhone Safari and Android Chrome checks, including their on-screen keyboards and a mid-range phone performance pass. Chrome viewport testing is not a substitute for those physical-device checks.
 - Native browser 200% zoom was not verifiably changed through the available controls; narrow-viewport reflow checks passed, but an actual zoom check remains.
 - The owner will deploy to the existing Hostinger server and explicitly requested no deployment now. Domain cutover, apex/www redirect, and live-domain smoke checks are handed over to the owner. Existing website routing and email DNS are preserved. A temporary Sites verification TXT record was added and then removed when the hosting preference changed; the complete DNS table was verified identical to its original state. Both pending Sites custom-domain associations were removed. The old deployment remains available.
+
+
+## Learn GenAI release ? 3 November 2026
+
+Three standalone lessons and their hub are implemented. The final check/build/verification run passes: 46 checked source files, 19 HTML pages, 18 indexable routes, 85 structured entities, 21 projects and all three legacy PDFs. The new verifier covers 17 lesson steps and all eight RAG repair combinations.
+
+Final local Lighthouse 12.8.2 mobile results:
+
+| Page | Performance | Accessibility | LCP | CLS | TBT |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| answer | 98 | 100 | 1.70 s | 0 | 0 ms |
+| brief | 98 | 100 | 1.77 s | 0 | 0 ms |
+| rag | 97 | 100 | 1.61 s | 0 | 0 ms |
+| hub | 97 | 100 | 1.57 s | 0 | 39 ms |
+| home | 95 | 100 | 1.85 s | 0 | 154 ms |
+
+All five pages scored 100 for best practices and SEO. These reports use the final lesson-shell.CgvOsfLv.js build. Scores vary between lab runs; the final homepage remains above the 90 performance target. No field or physical-device result is claimed.
+
+Browser testing exercised all 17 steps at each of 360, 390, 768, 1024, 1366 and 1440 CSS pixels (102 combinations), without horizontal page overflow or overlap between Nori's header area and activity evidence. Correct/incorrect choices, retries, Back, direct revisits, Replay, Restart, sequential rapid token input, final-token focus, takeaways focus, evaluation reset and clipboard denial were checked. Keyboard focus has a visible solid outline; Escape closes the menu and returns focus to its opener. Incorrect-answer explanations update a polite live region. Script-blocked pages expose the complete walkthrough, source corpus and direct contact links. Motion pause preserves state without animation; the same animation guard also respects prefers-reduced-motion.
+
+The lessons load the small shared bootstrap, lesson shell and enquiry helper, with no Three.js, GSAP or canvas. The original homepage still loads its deferred companion. Email/WhatsApp URLs were inspected with fictional local form data; no message was sent. Business and developer lessons preselect their appropriate training tracks.
+
+Reports, screenshots and the 102-row responsive log are in the accompanying review kit under qa/. See [LEARN-HANDOFF.md](docs/LEARN-HANDOFF.md) for reproduction and publication settings. Physical phones, native 200% zoom and a human screen-reader pass remain owner sign-off checks. The inherited build-tool dependency audit is not clean; details and the separate framework-upgrade recommendation are recorded in that handoff.
