@@ -70,22 +70,39 @@ Month 1 begins with the real public release. Two completed articles are in the b
 
 ## Consistent profile copy (owner to publish)
 
+Profile facts confirmed by Salmon on 4 November 2026. Corporate training remains the primary offering. The website uses `src/data/profile.ts` as its shared source for positioning, role periods, partner affiliation and ongoing education. Review this prepared copy whenever those facts change.
+
 LinkedIn headline:
-AI Engineer & Enterprise AI Trainer | OpenAI Programme Master Trainer | Practical GenAI, RAG & AI workflows
+Enterprise AI Trainer & AI Engineer | OpenAI Programme Master Trainer | Practical GenAI, RAG & AI workflows
 
 LinkedIn about opening:
-I help teams turn AI curiosity into practical skills and working solutions. Based in Mumbai, I deliver on-site workshops across India and live online training for business teams, developers and educators. My work combines 8+ years of experience, 10,000+ learners trained and an engineering portfolio spanning RAG, document automation and training-data pipelines. I am a Master Trainer for the OpenAI Programme in India, delivered through VMS Group APAC and Channel Partners Solutions, LLC. Explore the training paths and engineering work at https://salmonjoy.com/.
+I help teams turn AI curiosity into practical skills and working solutions. Based in Mumbai, I deliver on-site workshops across India and live online training for business teams, developers and educators. My work combines 8+ years of experience and 10,000+ learners trained with practical enterprise AI engineering.
+
+I previously served as Senior AI Engineer at DTBX Innovate Pvt. Ltd. (May 2025-September 2026), working across retrieval systems, banking and compliance document automation, model deployment and governance. Since October 2026, I have been a Master Trainer for the OpenAI Programme in India, delivered through VMS Group APAC and Channel Partners Solutions, LLC.
+
+I am enrolled in the three-year MS + DBA pathway with Walsh College through Great Learning. My first year is underway, with completion expected by the end of 2029 under the current programme timeline. Explore training, case studies and hands-on lessons at https://salmonjoy.com/.
 
 GitHub short bio:
-AI engineer & enterprise trainer. Practical GenAI, RAG and evaluation. Mumbai, India. Training: salmonjoy.com
+Enterprise AI trainer & engineer. Former Senior AI Engineer at DTBX. Practical GenAI, RAG & evaluation. salmonjoy.com
 
 GitHub profile README introduction:
-I’m Salmon Joy, an AI engineer and enterprise trainer based in Mumbai. I build and teach practical AI systems, from retrieval and document workflows to evaluation and data pipelines. My website brings together training paths, case studies and educational guides: https://salmonjoy.com/.
+I'm Salmon Joy, an enterprise AI trainer and engineer based in Mumbai. My engineering experience includes retrieval systems, document automation, model deployment and governance. I served as Senior AI Engineer at DTBX Innovate Pvt. Ltd. from May 2025 to September 2026.
+
+Since October 2026, I have been a Master Trainer for the OpenAI Programme in India, delivered through VMS Group APAC and Channel Partners Solutions, LLC. I am also enrolled in the MS + DBA pathway with Walsh College through Great Learning; my first year is underway, with completion expected by the end of 2029 under the current programme timeline. Training, technical projects and self-guided lessons: https://salmonjoy.com/.
 
 YouTube channel description:
-Practical AI explanations from Salmon Joy, AI engineer and enterprise trainer. Explore AI concepts, workflows and the questions worth asking before using a model's answer. Training is available on-site across India and live online. I am a Master Trainer for the OpenAI Programme in India, delivered through VMS Group APAC and Channel Partners Solutions, LLC. Training and guides: https://salmonjoy.com/.
+Practical AI explanations from Salmon Joy, enterprise AI trainer and engineer. Learn through examples, experiments and the questions worth asking before using an AI answer.
 
-Use current verified counts consistently. Do not change job titles or affiliations elsewhere by inference, and do not describe the programme as direct OpenAI employment.
+Former Senior AI Engineer at DTBX Innovate Pvt. Ltd. (May 2025-September 2026). Master Trainer for the OpenAI Programme in India since October 2026, delivered through VMS Group APAC and Channel Partners Solutions, LLC. 8+ years of experience and 10,000+ learners trained.
+
+Enrolled in the MS + DBA pathway with Walsh College through Great Learning; first year underway, with completion expected by the end of 2029 under the current programme timeline.
+
+Corporate training: on-site across India and live online for teams worldwide. Training, lessons and engineering work: https://salmonjoy.com/.
+
+Education wording:
+MS + DBA pathway, Walsh College, through Great Learning. Studies underway; expected completion: end of 2029 under the current programme timeline. Do not infer a formal MS specialism, an awarded degree, doctoral candidacy, Walsh alumni status or direct OpenAI employment. The first-year status needs a manual review as studies progress; passing a date does not award a degree.
+
+The supplied professional-profile PDF remains unchanged. These drafts are for the owner to publish; no external accounts have been updated.
 
 ## Genuine outreach opportunities
 
